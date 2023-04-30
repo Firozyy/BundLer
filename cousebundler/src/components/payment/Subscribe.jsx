@@ -30,16 +30,9 @@ function Subscribe({ user }) {
 
 
 
-  }
+  };
   useEffect(() => {
-    // if (error) {
-    //   toast.error(error);
-    //   dispatch({ type: "clearError" })
-    // }
-    // if (message) {
-    //   toast.success(message);
-    //   dispatch({ type: "clearmessage" })
-    // }
+
 
 
     
