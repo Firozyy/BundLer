@@ -33,6 +33,9 @@ export const register = catchasyncerrer(async (req, res, next) => {
     
     console.log(fileUri, "fileUriiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 
+
+    console.log("my cloud startttttttttttttttttttttttttttttttttttttttt");
+
     const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
     
     console.log(mycloud, "myclouddddddddddddddddddddddddddddddddd");
