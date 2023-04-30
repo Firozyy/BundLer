@@ -31,8 +31,11 @@ export const register = catchasyncerrer(async (req, res, next) => {
 
     const fileUri = getDataUri(file);
     
+    console.log(fileUri, "fileUriiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 
     const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
+    
+    console.log(mycloud, "myclouddddddddddddddddddddddddddddddddd");
 
     user = await User.create({
         name,
@@ -45,7 +48,7 @@ export const register = catchasyncerrer(async (req, res, next) => {
         }
     });
 
-
+console.log(user,"userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
 
     sentToken(res, "successfullyregistred", user, 201);
 });
