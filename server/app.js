@@ -9,6 +9,7 @@ import {fileURLToPath} from 'url'
 dotenv.config({path:'./config/.env'});
 
 const app= express();
+
 const _filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(_filename)
 const buildPath = path.join(__dirname, '../cousebundler/build/');
@@ -16,11 +17,11 @@ const indexPage = path.join(buildPath, '/index.html');
 
 app.use(express.static(buildPath));
 
-app.get('/*', (req,res)=>{
+app.get('/', (req,res)=>{
     res.sendFile(indexPage);
 });
 
-//cors platform
+// cors platform
 
 // import cors from  'cors'
 // app.use(cors({

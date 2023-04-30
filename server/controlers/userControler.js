@@ -9,7 +9,7 @@ import cloudinary from 'cloudinary'
 import getDataUri from "../utils/dataUri.js";
 
 import {Stat} from '../model/stats.js'
-import { log } from "console";
+
 
 export const register = catchasyncerrer(async (req, res, next) => {
 
@@ -450,3 +450,4 @@ User.watch().on("change", async () => {
     await stats[0].save();
     
 })
+
