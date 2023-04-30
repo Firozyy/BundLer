@@ -8,9 +8,10 @@ import Nodecron from 'node-cron'
 import { Stat } from "./model/stats.js";
 conectDb();
 cloudinary.v2.config({
-   cloud_name: process.env.cloud_name,
-   api_key: process.env.api_key,
-   api_secret: process.env.api_secret
+   cloud_name: process.env.Cloud_Name,
+   api_key: process.env.API_Key,
+   
+   api_secret: process.env.API_Secret
 });
 
 
