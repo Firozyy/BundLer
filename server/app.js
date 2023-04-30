@@ -21,7 +21,7 @@ app.get('/', (req,res)=>{
     res.sendFile(indexPage);
 });
 
-// cors platform
+// cors platform (for both work dev mod)
 
 // import cors from  'cors'
 // app.use(cors({
