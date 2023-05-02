@@ -5,7 +5,7 @@ import { useState } from 'react'
 import cursor from '../../../assets/images/cursor.png'
 import Sidebar from '../Sidebar'
 import { creatCourse } from '../../../redux/Action/admin'
-import { toast } from 'react-hot-toast'
+import  toast  from 'react-hot-toast'
 function Createcourse() {
   const [title, setTitle] = useState('')
   const [createdBy, setCreatedBy] = useState('')

@@ -4,7 +4,7 @@ import { FormLabel } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import { contactUs } from '../../redux/Action/otherAction.js'
 import {useDispatch, useSelector} from 'react-redux'
-import { toast } from 'react-hot-toast'
+import  toast  from 'react-hot-toast'
 
 function Contact() {
     const [email, setEmail] = useState('');

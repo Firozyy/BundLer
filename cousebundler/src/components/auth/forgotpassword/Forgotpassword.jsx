@@ -2,7 +2,7 @@ import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { forgotPassword } from '../../../redux/Action/profile'
 import { useDispatch, useSelector } from 'react-redux'
-import { toast } from 'react-hot-toast'
+import  toast  from 'react-hot-toast'
 
 
 function Forgotpassword() {

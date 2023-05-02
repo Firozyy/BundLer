@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './courses.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getallcousrses } from '../../redux/Action/cousrseAction'
-import { toast } from "react-hot-toast"
+import  toast  from "react-hot-toast"
 import { addtoplaylist } from '../../redux/Action/profile'
 import {getmyprofile} from '../../redux/Action/action'
 //element creation

@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar'
 import {useDispatch, useSelector} from 'react-redux'
 import { deleteuser, getAlluser, updateuser } from '../../../redux/Action/admin'
 import { useEffect } from 'react'
-import { toast } from 'react-hot-toast'
+import  toast  from 'react-hot-toast'
 function User() {
   const dispatch =useDispatch()
   const {users,loading,error,message} =useSelector(state => state.admin);

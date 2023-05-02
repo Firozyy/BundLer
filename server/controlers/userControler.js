@@ -46,7 +46,7 @@ export const register = catchasyncerrer(async (req, res, next) => {
     });
 
 
-    sentToken(res, "successfullyregistred", user, 201);
+    sentToken(res, "account has been successfully created", user, 201);
 });
 //login work
 export const login = catchasyncerrer(async (req, res, next) => {
@@ -65,17 +65,17 @@ export const login = catchasyncerrer(async (req, res, next) => {
 
 
     if (!user) {
-        return next(new ErrorHandler("Incorrecr Email or password", 409))
+        return next(new ErrorHandler("Incorrect Email or password", 409))
     };
 
     const ismatch = await user.comaparePassword(password);
     if (!ismatch) {
-        return next(new ErrorHandler("Incorrecr Email or password", 409))
+        return next(new ErrorHandler("Incorrect Email or password", 409))
     };
 
 
 
-    sentToken(res, `welcomeback${user.name}`, user, 201);
+    sentToken(res, `welcome  ${user.name}`, user, 201);
 });
 //logout work
 export const logout = catchasyncerrer(async (req, res, next) => {

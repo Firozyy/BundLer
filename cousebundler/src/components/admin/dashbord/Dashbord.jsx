@@ -68,7 +68,7 @@ function Dashbord() {
     viewsProfit,
     usersProfit,
   } = useSelector(state => state.admin)
-  console.log(viewsPercentage);
+  
   useEffect(() => {
     dispatch(getdashbordstats())
   }, [dispatch])

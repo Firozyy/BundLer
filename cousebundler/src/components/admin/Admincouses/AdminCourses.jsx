@@ -8,7 +8,7 @@ import Cousrsemodel from './Cousrsemodel'
 import { useDispatch, useSelector } from 'react-redux'
 import { getallcousrses, getCourseLecture } from '../../../redux/Action/cousrseAction'
 import { addLectures, deleteCourse, deletLecture } from '../../../redux/Action/admin'
-import { toast } from 'react-hot-toast'
+import  toast  from 'react-hot-toast'
 import { useState } from 'react'
 
 function AdminCourses() {

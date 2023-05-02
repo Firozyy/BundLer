@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { resetpassword } from '../../../redux/Action/profile';
-import { toast } from 'react-hot-toast';
+import  toast  from 'react-hot-toast';
 
 function Resetpassword() {
     const [Password, setPassword] = useState('');

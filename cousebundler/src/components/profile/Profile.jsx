@@ -7,7 +7,7 @@ import { fileuploderCss } from '../auth/register/Register';
 import { useDispatch, useSelector } from 'react-redux'
 import { removePlaylist, updateProfilePicture } from '../../redux/Action/profile';
 import { cancelSubscrioption, getmyprofile } from '../../redux/Action/action';
-import { toast } from 'react-hot-toast';
+import  toast  from 'react-hot-toast';
 
 
 
