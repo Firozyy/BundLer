@@ -18,5 +18,5 @@ const store = configureStore({
 export default store;
 
 
-export const server = 'http://65.1.136.226:4000/api/v1'
+export const server = 'http://13.233.198.225:4000/api/v1'
 // export const server = 'http://localhost:4000/api/v1'
