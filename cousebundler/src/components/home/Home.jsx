@@ -20,7 +20,7 @@ function Home() {
                     <VStack width={'full'} alignItems={['center', 'flex-end']} spacing='8'>
                         <Heading children="LEARN FROM EXPERTS " size={'2xl'} />
                         <Text fontFamily={'cursive'} fontSize={'2xl'} textAlign={['center','left']} children='Find Valueable Content At Reasonable Prise' />
-                        <Link to={'/cousrses'}>
+                        <Link to={'/courses'}>
                             <Button size={"lg"} colorScheme='yellow' >Explor Now</Button>
                         </Link>
                     </VStack>
