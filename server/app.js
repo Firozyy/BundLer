@@ -10,16 +10,7 @@ dotenv.config({path:'./config/.env'});
 
 const app= express();
 
-const _filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(_filename)
-const buildPath = path.join(__dirname, '../cousebundler/build/');
-const indexPage = path.join(buildPath, '/index.html');
 
-app.use(express.static(buildPath));
-
-app.get('/', (req,res)=>{
-    res.sendFile(indexPage);
-});
 
 // cors platform (for both work dev mod)
 
@@ -47,6 +38,20 @@ app.use("/api/v1",course);
 app.use("/api/v1",user);
 app.use("/api/v1",payment);
 app.use("/api/v1",other);
+
+
+//build path
+const _filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(_filename)
+const buildPath = path.join(__dirname, '../cousebundler/build/');
+const indexPage = path.join(buildPath, '/index.html');
+
+app.use(express.static(buildPath));
+
+app.get('/*', (req,res)=>{
+    res.sendFile(indexPage);
+});
+
 export default app;
 //import 
 app.use(ErrerMiddleware);
