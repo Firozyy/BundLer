@@ -11,7 +11,7 @@ import { toast } from 'react-hot-toast'
 function User() {
   const dispatch =useDispatch()
   const {users,loading,error,message} =useSelector(state => state.admin);
-  console.log(users);
+
   // const users = [{
   //   id: "a1",
   //   Name:
@@ -102,7 +102,8 @@ function Row({ item, updatehandler, delethandler,loading }) {
       <Td>{item.role}</Td>
 
       <Td >
-        #{item.subscription && item.subscriptionstatus === 'activ' ? "Activ " : "Not Active"}
+      
+        #{item.subscription && item.subscription.status === 'active' ? "Activ " : "Not Active"}
 
       </Td>
       <Td isNumeric>
