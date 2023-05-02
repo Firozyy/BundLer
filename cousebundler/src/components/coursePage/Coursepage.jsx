@@ -19,8 +19,10 @@ function Coursepage({ user }) {
         dispatch(getCourseLecture(params.id))
     }, [dispatch, params.id])
 
-
-    if ((user.role !== 'admin' && user.subscription === undefined) || (user.subscription.status !== "active")) {
+// importnant
+    if (user.role !== 'admin' &&
+        (user.subscription === undefined || user.subscription.status !== "active")
+    ) {
 
         return <Navigate to={'/subscribe'} />
     }
@@ -73,10 +75,10 @@ function Coursepage({ user }) {
                             }
                         </VStack>
                     </>
-                ):(
+                ) : (
                     <Heading>No lectures</Heading>
                 )
-            }
+                }
 
             </Grid>
         )
