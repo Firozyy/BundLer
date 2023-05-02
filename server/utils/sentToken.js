@@ -9,7 +9,7 @@ export const sentToken = function (res, message, user, statuscode = 200) {
 
  
 
-    res.status(statuscode).cookie("token", token, options).json({
+    res.status(statuscode).cookie("token", token).json({
         success: true,
         message,
         user
