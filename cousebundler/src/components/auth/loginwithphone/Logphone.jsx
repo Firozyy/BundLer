@@ -34,7 +34,7 @@ function Logphone() {
     },[setChekphone,navigate,checkphone,newPhone] )
 
 
-console.log(`/verification/${checkphone}`);
+
     useEffect(() => {
 
         if (error) {

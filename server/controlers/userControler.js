@@ -424,7 +424,7 @@ export const deletmyprofile = catchasyncerrer(async (req, res, next) => {
 
     if (!user) return next(new ErrorHandler("user not found", 404))
 
-    console.log(user);
+  
     //delet profile picture from cloud
     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
 
