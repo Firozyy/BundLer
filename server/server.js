@@ -22,6 +22,7 @@ export const instance = new Razorpay({
    key_secret: process.env.razorpay_SecretKey,
 });
 
+//statt
 Nodecron.schedule("0 0 0 1 * *", async()=>{
   try {
    await Stat.create({});

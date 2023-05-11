@@ -27,6 +27,16 @@ const schema = new mongoose.Schema({
         type: String,
         
     },
+    otp: {
+
+     type: String,
+        
+    },
+    phone: {
+        require: [true, 'please enter your mobile'],
+        unique: true,
+        type: String,
+    },
     subscription: {
         id: String,
         status: String
@@ -59,7 +69,7 @@ const schema = new mongoose.Schema({
     resetpasswordExpire: String
 })
 
-schema.methods.getJWTtoke = function () {
+schema.methods.getJWTtoken = function () {
     return Jwt.sign({ _id: this._id }, process.env.secreKey, {
         expiresIn: process.env.jwtExpiry
     })

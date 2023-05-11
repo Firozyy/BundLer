@@ -7,10 +7,7 @@ import crypto from 'crypto'
 
 export const buySubsriptiion = catchasyncerrer(async (req, res, next) => {
 
-
     const user = await User.findById(req.user._id);
-
-
 
     if (user.role === "admin") return next(new ErrorHandler('admin cant buy subscription', 400));
 

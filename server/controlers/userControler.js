@@ -7,14 +7,17 @@ import crypto from 'crypto'
 import { Course } from "../model/Course.js";
 import cloudinary from 'cloudinary'
 import getDataUri from "../utils/dataUri.js";
+import twilio from 'twilio';
+import { Stat } from '../model/stats.js'
 
-import {Stat} from '../model/stats.js'
+
+
 
 
 export const register = catchasyncerrer(async (req, res, next) => {
 
 
-    const { name, email, password, role } = req.body
+    const { name, email, password, role, phone } = req.body
     const file = req.file;
     let user = await User.findOne({ email });
 
@@ -30,15 +33,17 @@ export const register = catchasyncerrer(async (req, res, next) => {
 
 
     const fileUri = getDataUri(file);
-    
-  const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
-    
+
+    const mycloud = await cloudinary.v2.uploader.upload(fileUri.content);
+
 
     user = await User.create({
         name,
         email,
         password,
         role,
+
+        phone,
         avatar: {
             public_id: mycloud.public_id,
             url: mycloud.secure_url
@@ -77,6 +82,10 @@ export const login = catchasyncerrer(async (req, res, next) => {
 
     sentToken(res, `welcome  ${user.name}`, user, 201);
 });
+
+
+
+
 //logout work
 export const logout = catchasyncerrer(async (req, res, next) => {
 
@@ -392,7 +401,7 @@ export const deletprofile = catchasyncerrer(async (req, res, next) => {
     //delet profile picture from cloud
     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
 
-    await user.deleteOne({id});
+    await user.deleteOne({ id });
 
     res.status(200).json({
         success: true,
@@ -409,7 +418,7 @@ export const deletprofile = catchasyncerrer(async (req, res, next) => {
 
 
 export const deletmyprofile = catchasyncerrer(async (req, res, next) => {
-log
+    log
     const id = req.user._id;
     const user = await User.findById(id)
 
@@ -437,9 +446,9 @@ log
 
 User.watch().on("change", async () => {
 
-    const stats = await Stat.find({}).sort({createdAT:"desc"}).limit(1);
+    const stats = await Stat.find({}).sort({ createdAT: "desc" }).limit(1);
 
-    const subscriotion = await User.find({"subscription.status":'active'});
+    const subscriotion = await User.find({ "subscription.status": 'active' });
 
     stats[0].users = await User.countDocuments();
 
@@ -448,6 +457,97 @@ User.watch().on("change", async () => {
     stats[0].createdAT = new Date(Date.now());
 
     await stats[0].save();
-    
+
 })
+
+//work hereeeee...>>>>>>>>>>>>
+export const phoneLogin = catchasyncerrer(async (req, res, next) => {
+
+    const { phone } = req.body
+   
+    if (!phone) {
+        return next(new ErrorHandler("please add all fields", 400))
+    };
+
+    let user = await User.findOne({ phone });
+
+
+    if (!user) {
+        return next(new ErrorHandler("Not Registerd", 409))
+    };
+
+
+    const client = twilio(process.env.Account_SID, process.env.Auth_Token);
+
+    await client.verify.v2.services(process.env.service_id).verifications
+        .create({
+            to: `+91${phone}`,
+            channel: 'sms'
+        })
+
+        .then(response => {
+
+
+            res.status(200).json({
+                success: true,
+                phone
+            })
+           
+        }
+
+        ).catch(e => {
+            res.status(200).json({
+                success: false,
+                message: e.message
+            })
+
+
+
+        })
+   
+})
+
+
+
+
+export const otpVerification = catchasyncerrer(async (req, res, next) => {
+
+    const { otp } = req.body
+ 
+
+ const {phoneNumber:phone} = await req.params
+
+
+    let user = await User.findOne({ phone });
+
+    if (!otp) {
+        return next(new ErrorHandler("please add all fields", 400))
+    };
+
+    const client = twilio(process.env.Account_SID, process.env.Auth_Token);
+    await client.verify.v2.services(process.env.service_id).verificationChecks
+        .create({
+            to: `+91${phone}`,
+            code: otp
+        })
+
+        .then(response => {
+            if (response.valid == false) {
+                res.status(400).json({
+                    success: false,
+                    message: 'invalid otp'
+                })
+            };
+            sentToken(res, `welcome  ${user.name}`, user, 201);
+
+        }).catch(e => {
+            res.status(200).json({
+                success: false,
+                message: 'otp servise problem'
+            })
+        })
+     
+});
+
+
 
