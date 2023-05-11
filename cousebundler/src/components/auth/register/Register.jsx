@@ -12,6 +12,7 @@ const fileUploadStyle = {
 function Register() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
     const [ImagePrev, setImagePrev] = useState('')
     const [imAge, setImage] = useState('')
@@ -35,6 +36,7 @@ function Register() {
         myForm.append("name", name);
         myForm.append("email", email);
         myForm.append("password", password);
+        myForm.append("phone", phone);
         myForm.append("file", imAge);
         dispatch(register(myForm));
     };
@@ -71,6 +73,20 @@ function Register() {
                             focusBorderColor='yellow.500'
                         />
                     </Box>
+
+                    <Box my={'4'}>
+                        <FormLabel htmlFor='phone' children='phone' />
+                        <Input
+                            required
+                            id="phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder='9876543211'
+                            type={'number'}
+                            focusBorderColor='yellow.500'
+                        />
+                    </Box>
+
                     <Box my={'4'}>
                         <FormLabel htmlFor='password' children='password' />
                         <Input
@@ -83,9 +99,10 @@ function Register() {
                             focusBorderColor='yellow.500'
                         />
                     </Box>
+          
 
                     <Box my={'4'}>
-                        <FormLabel htmlFor='chooseAvatar' children='password' />
+                        <FormLabel htmlFor='chooseAvatar' children='Avatar' />
                         <Input
                             required
                             id="chooseAvatar"

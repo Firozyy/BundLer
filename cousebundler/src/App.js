@@ -28,6 +28,10 @@ import toast, { Toaster } from "react-hot-toast"
 import { getmyprofile } from './redux/Action/action'
 import { ProtectedRoute } from "protected-route-react"
 import Loader from './components/layout/loader/Loader'
+import Logphone from './components/auth/loginwithphone/Logphone'
+
+import OtpVerification from './components/auth/loginwithphone/OtpVerification'
+
 
 function App() {
 
@@ -67,13 +71,13 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/courses' element={<Courses />} />
               <Route path='/course/:id' element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}> <Coursepage user={user}/></ProtectedRoute>
-            } />
+                <ProtectedRoute isAuthenticated={isAuthenticated}> <Coursepage user={user} /></ProtectedRoute>
+              } />
               <Route path='/contact' element={<Contact />} />
               <Route path='/request' element={<Request />} />
               <Route path='/about' element={<About />} />
 
-        {/* protected routes statrt here  */ }
+              {/* protected routes statrt here  */}
               <Route path='/profile' element={<ProtectedRoute isAuthenticated={isAuthenticated}>  <Profile user={user} />  </ProtectedRoute>} />
 
               <Route path='/changepassword' element={
@@ -84,16 +88,22 @@ function App() {
                 <ProtectedRoute isAuthenticated={isAuthenticated}> <Updateprofile user={user} /> </ProtectedRoute>
               } />
 
-
-
-
-
               <Route path='/login' element={
                 <ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
                   <Login />
 
                 </ProtectedRoute>
               } />
+
+
+              <Route path='/sentotp' element={<Logphone />} />
+
+
+
+
+
+
+
               <Route path='/register' element={
                 <ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
                   <Register />
@@ -118,6 +128,12 @@ function App() {
                 </ProtectedRoute>
               } />
 
+              <Route path='/verification/:phoneNumber' element={
+                <ProtectedRoute
+                  isAuthenticated={!isAuthenticated} redirect='/profile'>
+                  <OtpVerification/>
+                </ProtectedRoute>
+              } />
 
               <Route path='/paymnetsucces' element={<Paymnetsucces />} />
               <Route path='/paymentfailed' element={<Paymnetfailed />} />

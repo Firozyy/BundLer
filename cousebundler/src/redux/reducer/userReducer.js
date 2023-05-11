@@ -18,7 +18,22 @@ export const userReducer = createReducer({}, {
 
         state.loading = false;
         state.isAuthenticated = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
+        state.error = action.payload
+    },
+    phoneLoginRequest: (state) => {
+        state.loading = true;
+    },
+    phoneLoginSuccess: (state, action) => {
+        state.loading = false;
+        
+        state.phone = action.payload
+     
+    },
+    phoneLoginFail: (state, action) => {
+
+        state.loading = false;
+
         state.error = action.payload
     },
 
@@ -40,7 +55,7 @@ export const userReducer = createReducer({}, {
     },
 
 
-
+// otp init
     loaduserRequest: (state) => {
         state.loading = true;
     },
@@ -55,6 +70,23 @@ export const userReducer = createReducer({}, {
         state.loading = false;
         state.isAuthenticated = false;
         state.error = action.payload.user
+    },
+    // otp verification\
+    otpVerificationRequest: state => {
+        state.loading = true;
+    },
+    otpVerificationSuccess: (state, action) => {
+
+        console.log("reducerrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
+        state.message = action.payload.message
+    },
+    otpVerificationFail: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
     },
     //logout
     logoutRequest: (state) => {

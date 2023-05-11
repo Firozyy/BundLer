@@ -20,6 +20,60 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 
+export const loginWithOtp = (phone) => async (dispatch) => {
+
+    try {
+        dispatch({ type: "phoneLoginRequest" });
+
+        const config = {
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            withCredentials: true,
+        }
+        const { data } = await axios.post(`${server}/login/phone`, {
+            phone
+        }, { config }
+        );
+   
+        dispatch({ type: "phoneLoginSuccess", payload: data.phone });
+    } catch (error) {
+        dispatch({ type: "phoneLoginFail", payload: error.response.data.message })
+
+    }
+
+
+};
+
+export const otpverification = (otp,phoneNumber) => async (dispatch) => {
+
+    try {
+        dispatch({ type: "otpVerificationRequest" });
+
+        const config = {
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            withCredentials: true,
+        }
+        const { data } = await axios.post(`${server}/otpverification/${phoneNumber}`, {
+            otp,
+        }, { config }
+        );
+
+
+
+        dispatch({ type: "otpVerificationSuccess", payload: data });
+        
+    } catch (error) {
+        dispatch({ type: "otpVerificationFail", payload: error.response.data.message })
+
+    }
+
+
+};
+
+
 export const getmyprofile = () => async (dispatch) => {
 
 

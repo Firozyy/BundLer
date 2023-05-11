@@ -51,7 +51,14 @@ function Login() {
                     <Button my={'4'} colorScheme={'yellow'} type='submit'>
                         Login
                     </Button>
+                    <Box my={'2'}>
+                        Login with phone{' '}
+                        <Link to={"/sentotp"}>
+                            <Button variant={'link'} colorScheme='yellow'> click here</Button>
+                        </Link>
+                        here
 
+                    </Box>
                     <Box my={'2'}>
                         Newuser?{' '}
                         <Link to={"/Register"}>
