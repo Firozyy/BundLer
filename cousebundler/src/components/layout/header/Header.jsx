@@ -46,7 +46,7 @@ function Header({ isAuthenticated = false, user }) {
             >
                 <DrawerOverlay backdropFilter={'blur(3px)'} />
                 <DrawerContent>
-                    <DrawerHeader borderBottom={'1px'}>Course bundler</DrawerHeader>
+                    <DrawerHeader borderBottom={'1px'}>EduFly</DrawerHeader>
                     <DrawerBody>
 
                         <VStack spacing={'4'} alignItems='flex-start'>

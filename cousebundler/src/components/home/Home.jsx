@@ -2,7 +2,7 @@ import { Box, Button, Heading, HStack, Image, Stack, Text, VStack } from '@chakr
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './home.css'
-import vg from '../../assets/images/bg.png'
+import vg from '../../assets/images/Logoo.png'
 import { CgGoogle, CgYoutube } from "react-icons/cg";
 import { SiCoursera, SiUdemy } from "react-icons/si";
 import { DiAws } from "react-icons/di";
