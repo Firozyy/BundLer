@@ -35,14 +35,14 @@ function Subscribe({ user }) {
 
 
 
-    
+
     if (error) {
       toast.error(error);
       dispatch({ type: 'clearError' });
     };
- 
+
     if (courceError) {
-  
+
       toast.error(courceError);
       dispatch({ type: "clearError" });
     };
